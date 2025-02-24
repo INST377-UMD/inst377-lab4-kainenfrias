@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="Lab04.css">
+  </head>
+  <body>
+    <header>
+      <h1 id="pageHeader">Kainen Frias INST377 - Lab 4</h1>
+    </header>
+    <form id="actions" name="alerter" onsubmit="return alertMe()">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required />
+      <input type="submit" value="Alert Me!" />
+    </form>
+    <form id="actions" onsubmit="return changeColor()">
+      <input type="submit" value="Change Color" />
+    </form>
+    <form id="actions" name="tester" onsubmit="return textTester()">
+      <label for="inputText">Text Tester:</label>
+      <input type="text" id="inputText" />
+      <input type="submit" value="Validate Text" />
+    </form>
+    <form id="actions" onsubmit="return addText()">
+      <input type="submit" value="Add Text" />
+    </form>
+    <script type="text/javascript">
+      function alertMe() {
+        console.log("Alerting user inputted name:", document.alerter.name.value);
+        alert("Hi " + document.alerter.name.value + "!");
+        return false;
+      }
+      function changeColor() {
+        console.log("Changing background color");
+        if (document.body.style.backgroundColor === "white") {
+          document.body.style.backgroundColor = "grey";
+        } else {
+          document.body.style.backgroundColor = "white";
+        }
+        console.log(
+          "Successfully changed, current background color is:",
+          document.body.style.backgroundColor
+        );
+        return false;
+      }
+      function textTester() {
+        var input = document.tester.inputText.value;
+        console.log("Validating user input:", input);
+        const validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+        if (input.trim() === "") {
+          alert("Bruh you have to enter text");
+          return false;
+        }
+        if (validation.test(input)) {
+          alert("Bruhhhh special characters detected!");
+          return false;
+        } else {
+          alert("Yayyyy no special characters found!");
+          return false;
+        }
+      }
+      function addText() {
+        console.log("Adding text to header");
+        document.getElementById("pageHeader").textContent =
+          "Kainen Frias INST377 - Lab 4 - Add Text";
+        return false;
+      }
+    </script>
+  </body>
+</html>
